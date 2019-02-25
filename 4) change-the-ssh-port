@@ -1,0 +1,5 @@
+For that a file has to be changed : /etc/ssh/sshd_config
+you need then to find the line where the port is defined, you need to decomment it and to put the number of the port you will use.
+example : Port 1313
+
+And that's all actually, the port is changed, you need to reboot et voilà !
