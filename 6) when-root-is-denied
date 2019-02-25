@@ -1,0 +1,12 @@
+In order to deny the right to the root user to connect in shh follow the path : 
+
+step 1 : you need to modify the file /etc/ssh/sshd_config (again)
+step 2 : find the line PermitRootLogin 
+step 3 : uncomment it 
+step 4 : put no if there is a yes at the end of the line
+step 5 : save it
+step 6 : reboot the machine
+step 7 : ???
+step 8 : profit
+
+Et voilà !
