@@ -1,0 +1,33 @@
+More protection ! I love it ! by the way go out covered.
+you should look first on the internet what DOS attacks are, then in order to protect you machine from them, fail2ban is a solution.
+
+first things first : ~ (sudo) apt install fail2ban
+
+you then have to configure it here : /etc/fail2ban
+
+you don't have to touch /etc/fail2ban/fail2ban.conf normally (but if you want you can)
+/etc/fail2ban/jail.conf contains the default jails, that can be activated on /etc/fail2ban/jail.d/defaults-debian.conf (debian or ubuntu)
+
+my file looks like this : 
+
+[DEFAULT]
+ignoreip = 10.11.142.157/30 <-- I don't want to ban myself
+
+[sshd] <-- first jail for ssh connections
+
+enabled  = true
+port     = ssh,1313 <-- or 1313 in my case
+logpath  = /var/log/auth.log
+bantime	 = 120 <-- 2minutes of bantime
+maxretry = 5 <-- 5 tries before ban
+
+[apache] <-- second jail for web connections
+
+port     = http,https
+logpath  = %(apache_error_log)s
+bantime	 = 3600
+maxretry = 4
+
+And it is now done, a reboot could help to lauch everything right.
+
+Et voilà !
