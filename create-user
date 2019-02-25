@@ -34,3 +34,5 @@ Is the information correct? [Y/n]
 you can choose to let these informations empty or not but don't forget to answer yes at the end.
 
 Et voilà !
+
+(to remove a user, use 'userdel' --> RTFM) 
