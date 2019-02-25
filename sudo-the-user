@@ -1,0 +1,9 @@
+In order to allow a user to use sudo, you need to add him in the sudoers file.
+You can find this file here : /etc/sudoers
+
+You have to add a line under : #includedir /etc/sudoers.d : 
+username    ALL=(ALL) ALL
+
+when it's done, save the file and reboot the machine (just to be sure).
+
+Et voilà !
