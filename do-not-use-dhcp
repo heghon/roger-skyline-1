@@ -1,0 +1,25 @@
+For this one you will have several things to do.
+
+First, you need to open the file : /etc/network/interfaces
+You will have normally 2 interfaces, one called lo (don't touch it), and one called enp0s3 or something.
+If there is no problem, you will see this line : iface enp0s3 inet dhcp ; you can translate that with : the VM use the dhcp service to connect to the internet.
+But we don't want that so it's time to define an ip address for the machine.
+
+To define this address erase the word dhcp, then replace it with static, like that : 
+iface enp0s3 inet static
+under this line, you'll have to define some things :
+the address : address xx.xx.xx.xx <-- adress is in function of your own ip address, the 2 first numbers have to be the same.
+the netmask : netmask 255.255.255.252 <-- in order to have a /30 netmask
+the gateway : gateway xx.xx.xx.xx <-- the same as your own gateway (google is your friend to find it ... or ifconfig)
+
+so it will look like (at least for me): 
+# The primary network interface
+allow-hotplug enp0s3
+iface enp0s3 inet static
+	address 10.11.142.157
+	netmask 255.255.255.252
+	gateway 10.11.254.254
+  
+  Then, a reboot will be necessary and now you can connect with ssh.
+  
+Et voilà !
