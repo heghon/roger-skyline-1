@@ -1,0 +1,29 @@
+Guess what ? protection again !
+Here I recommand you to look what ports scans are for (google is your friend).
+Now, to protect your machine against it, portsentry is a solution.
+
+Install it first : ~ apt-get install portsentry
+
+now it will done nothing for you unless you configure it, and for that : ~ (sudo) nano /etc/portsentry/portsentry.conf
+_ Port configuration : leave it as it is, because it's reasonable for us.
+_ Advanced Stealth Scan Detection Options : again leave it like you find it, just add ports you'd liked not to be scanned.
+_ Configurations Files : default is good you know ...
+_ Misc. Configuration Options : RESOLVE_HOST = "1"
+_ Response Options : well, didn't touch it, so your turn to do things if you want
+_ Ignore options : BLOCK_UDP="1"
+                   BLOCK_TCP="1"
+_ Dropping Routes : comment every line except KILL_ROUTE="/sbin/iptables -I INPUT -s $TARGET$ -j DROP"
+_ TCP Wrappers : new style sounds nice
+_ External Command : this is important, I personnaly put KILL_RUN_CMD="/etc/portsentry/commands/notify.sh $TARGET$ $PORT$ $MODE$"
+and notify.sh looks like that : 
+
+_ Scan Trigger Value : 0 is a good number to put
+_ Port Banner Section : do you like to show off, here's your chance, but I recommand you to not
+
+Something else you could use to make portsentry simpler and more efficient : 
+open /etc/default/portsentry and change : 
+TCP_MODE="atcp"
+UDP_MODE="audp"
+the ports list will be done automatically, only the open ports will be checked.
+
+Et voilà !
