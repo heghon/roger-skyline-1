@@ -1,0 +1,36 @@
+For this part, normally with the creation of your VM, it is asked to creat also a first user.
+So give him a little name, with a little password and boom you have your user!
+
+By the way, during the same creation of this VM, you will "create" the root user (with another password).
+
+For those wondering how to create a user in the VM, well it goes like that :
+if your user is a sudoer, just use sudo before the following command :
+if the user isn't, you need to use root (command : ~ su) and then . the command :
+~ (sudo) adduser <username> 
+
+then, this appears :
+
+Adding user `username' ...
+Adding new group `username' (1001) ...
+Adding new user `username' (1001) with group `username' ...
+Creating home directory `/home/username' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password:
+
+don't be scared and give a password for the new folk you added.
+
+then : 
+
+passwd: password updated successfully
+Changing the user information for username
+Enter the new value, or press ENTER for the default
+	Full Name []:
+	Room Number []:
+	Work Phone []:
+	Home Phone []:
+	Other []:
+Is the information correct? [Y/n]
+
+you can choose to let these informations empty or not but don't forget to answer yes at the end.
+
+Et voilà !
