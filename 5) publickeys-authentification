@@ -3,7 +3,7 @@ Anyway, you will need to change the file /etc/ssh/sshd_config.
 find here the line #PubkeyAuthentication yes
 
 if you already have yes put here, this is nice, relax for a seond and stretch.
-if not put a yes, the relax and stretch.
-uncomment the line and then it's done.
+if not put a yes, then relax and stretch.
+uncomment the line (or not because it's normally put as a yes) and then it's done.
 
 Et voilà !
