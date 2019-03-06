@@ -3,7 +3,7 @@ anyway, for this part you'll have to install something to help you secure your m
 
 To install it : ~ apt-get install iptables
 
-then, you'll need to know what ports are actually opened, and for that : ~nmap <ip address of your machine>
+then, you'll need to know what ports are actually opened, and for that : ~ nmap <ip address of your machine>
 
 for me the output looks like that :
 
@@ -16,7 +16,7 @@ PORT   STATE SERVICE
 
 Nmap done: 1 IP address (1 host up) scanned in 0.69 seconds
 
-as you can see, only the port 80 is open, but here we want to secure the ports 22 (for ssh connections), 80 (http connections) and 443 (https connections).
+as you can see, only the port 80 is open, but here we want to secure the ports 1313 (for ssh connections), 80 (http connections) and 443 (https connections).
 for that we will create a bash file in /etc/init.d, this way, the rules will be launches every time the machine is booted.
 
 the file should look like that : 
@@ -32,7 +32,7 @@ the file should look like that :
 
 ## My rules
 /sbin/iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT  --> accept the connections already established
-/sbin/iptables -A INPUT -p tcp -i enp0s3 --dport 22 -j ACCEPT --> authorize connections on port 22 (ssh)
+/sbin/iptables -A INPUT -p tcp -i enp0s3 --dport 22 -j ACCEPT --> authorize connections on port 1313 (ssh)
 /sbin/iptables -A INPUT -p tcp -i enp0s3 --dport 80 -j ACCEPT --> authorize connections on port 80 (http)
 /sbin/iptables -A INPUT -p tcp -i enp0s3 --dport 443 -j ACCEPT  --> authorize connections on port 443 (https)
 /sbin/iptables -A INPUT -i lo -j ACCEPT --> authorize local traffic
@@ -40,7 +40,8 @@ the file should look like that :
 /sbin/iptables -A OUTPUT -p icmp -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT --> authorizations for output connections
 
 the rules are now defined and you can test it by launching this bash 
-~ (sudo) chmod 700 <nameofyourfile.sh>
+~ (sudo) chmod 755 <nameofyourfile.sh>
+~ (sudo) chmod +x <nameofyourfile.sh>
 ~ (sudo) sh <nameofyourfile.sh>
 
 Et voilà !
