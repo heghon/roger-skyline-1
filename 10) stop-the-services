@@ -7,7 +7,6 @@ if you don't want to search everything online you can just do what I done but th
 
 The services I stopped are : 
   Apache_htcacheclean : used to clean the memory of cache data. well as we don't go on the internet very often, it's not really useful.
-  Console-setup.sh : 
   Dbus : it's an inter-process communication system, but we don't use a lot of them and the user that can use it is root, anyway, not really useful
   
   and for the rest, I'm pretty sure they are useful, but I can be wrong.
