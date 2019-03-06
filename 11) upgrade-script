@@ -1,0 +1,25 @@
+Now, you need to write a script that will do a update, and an upgrade of evrey packet you have on your machine.
+
+Mine looks like that : 
+
+#! /bin/sh
+
+apt-get update && apt-get -y upgrade > /var/log/update_script.log
+
+not that scary...
+anyway don't forget to make your script an executable : 
+~ (sudo) chmod 755 <nameofyourfile.sh>
+~ (sudo) chmod +x <nameofyourfile.sh>
+
+after that it is asked that this file has to be runned every boot and once a week at 4am.
+For that :
+~ (sudo) crontab -e
+
+inside the crontab file, atht bottom, you can now place tasks like this : 
+
+@reboot /home/baptiste/upgrade-script.sh    <-- script launched at every boot.
+0 4 * * 1 /home/baptiste/upgrade-script.sh  <-- script launched once a week at 4am.
+
+reboot now and llok that you don't need to upgrade anything now.
+
+Et voilà !
