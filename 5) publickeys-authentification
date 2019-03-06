@@ -1,4 +1,4 @@
-For that part, normally, the access of your VM is already set to be used with ublic keys. 
+For that part, normally, the access of your VM is already set to be used with public keys. 
 Anyway, you will need to change the file /etc/ssh/sshd_config.
 find here the line #PubkeyAuthentication yes
 
@@ -7,3 +7,13 @@ if not put a yes, then relax and stretch.
 uncomment the line (or not because it's normally put as a yes) and then it's done.
 
 Et voilà !
+
+Now you probably want to know how this work.
+Well, first you need to create a new user on your VM.
+After you'll need to create keys for the connection on the host, for that : ~ ssh-keygen
+the keys will be standards but you can change it (RTFM)
+
+you know have your keys in the host machine, you nedd to give them to the client, and for that : 
+~ ssh-copy-id -i ~/.ssh/id_rsa.pub user@ip_machine
+
+the ssh connection is now normally possible (ssh user@ip_machine)
