@@ -14,9 +14,8 @@ _ Ignore options : BLOCK_UDP="1"
                    BLOCK_TCP="1"
 _ Dropping Routes : comment every line except KILL_ROUTE="/sbin/iptables -I INPUT -s $TARGET$ -j DROP"
 _ TCP Wrappers : new style sounds nice
-_ External Command : this is important, I personnaly put KILL_RUN_CMD="/etc/portsentry/commands/notify.sh $TARGET$ $PORT$ $MODE$"
-and notify.sh looks like that : 
-
+_ External Command : this is important, I personnaly put KILL_RUN_CMD="/sbin/iptables -I INPUT -s $TARGET$ -j DROP && /sbin/iptables -I INPUT -s $TARGET$ -m limit --limit 3/minute --limit-burst 5 -j LOG --log-level debub --log-prefix 'Portsentry: dropping: '"
+And this is a basic.
 _ Scan Trigger Value : 0 is a good number to put
 _ Port Banner Section : do you like to show off, here's your chance, but I recommand you to not
 
